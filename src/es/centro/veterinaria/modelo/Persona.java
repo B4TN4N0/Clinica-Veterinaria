@@ -2,20 +2,23 @@ package es.centro.veterinaria.modelo;
 
 public class Persona {
     private final String dni;
-    private String nombre;
+    private String nombre = "Jane Doe";
     private String telefono = "000000000";
     private String email = "default@def.es";
 
     public Persona(String dni, String nombre, String telefono, String email) {
         dni = transformarDniMayusculas(dni);
         nombre = capitalizarNombre(nombre);
-        if (esDniValido(dni) && esTelefonoValido(telefono) && esEmailValido(email)) {
+        if (nombre == null || nombre.isEmpty()) {
+            System.out.println("No se ha ingresado el nombre correctamente. se ha establecido el valor por defecto.");
+        } else {
             this.nombre = nombre;
+        }
+        if (esDniValido(dni) && esTelefonoValido(telefono) && esEmailValido(email)) {
             this.email = email;
             this.telefono = telefono;
             System.out.println("Persona registrada correctamente.");
         } else {
-            this.nombre = nombre;
             if (!esDniValido(dni)) {
                 System.out.println(
                         "CUIDADO: El DNI aportado no es válido. Se ha establecido el valor aportado, pero puede que algunas cosas fallen");
