@@ -24,7 +24,7 @@ public class Persona {
             if (nombre == null || nombre.isEmpty()) {
                 System.out
                         .println(
-                                "CUIDADO: No se ha ingresado el nombre correctamente. se ha establecido el valor por defecto.");
+                                "CUIDADO: El nombre correctamente no ha sido ingresado correctamente. se ha establecido el valor por defecto.");
             } else {
                 this.nombre = nombre;
             }
