@@ -43,6 +43,22 @@ public class Persona {
         this.dni = dni;
     }
 
+    public String getDni() {
+        return this.dni;
+    }
+
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public String getTlfn() {
+        return this.telefono;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
     private static String transformarDniMayusculas(String dni) {
         if (dni == null || dni.isEmpty()) {
             return null;
