@@ -9,12 +9,10 @@ public class Persona {
     public Persona(String dni, String nombre, String telefono, String email) {
         dni = transformarDniMayusculas(dni);
         nombre = capitalizarNombre(nombre);
-        if (nombre == null || nombre.isEmpty()) {
-            System.out.println("No se ha ingresado el nombre correctamente. se ha establecido el valor por defecto.");
-        } else {
+
+        if (esDniValido(dni) && esTelefonoValido(telefono) && esEmailValido(email)
+                && !(nombre == null || nombre.isEmpty())) {
             this.nombre = nombre;
-        }
-        if (esDniValido(dni) && esTelefonoValido(telefono) && esEmailValido(email)) {
             this.email = email;
             this.telefono = telefono;
             System.out.println("Persona registrada correctamente.");
@@ -22,6 +20,13 @@ public class Persona {
             if (!esDniValido(dni)) {
                 System.out.println(
                         "CUIDADO: El DNI aportado no es válido. Se ha establecido el valor aportado, pero puede que algunas cosas fallen");
+            }
+            if (nombre == null || nombre.isEmpty()) {
+                System.out
+                        .println(
+                                "CUIDADO: No se ha ingresado el nombre correctamente. se ha establecido el valor por defecto.");
+            } else {
+                this.nombre = nombre;
             }
             if (!esTelefonoValido(telefono)) {
                 System.out.println(
