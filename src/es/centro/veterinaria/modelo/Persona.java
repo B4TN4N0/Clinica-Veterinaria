@@ -50,7 +50,7 @@ public class Persona {
     }
 
     private static boolean esDniValido(String dni) {
-        if (dni.length() != 9) {
+        if (dni == null || dni.isEmpty() || dni.length() != 9) {
             return false;
         } else {
             final String LETRAS = "TRWAGMYFPDXBNJZSQVHLCKE";
