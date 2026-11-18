@@ -71,7 +71,7 @@ public class Persona {
         return (telefono.matches("[6-9]\\d{8}"));
     }
 
-    public static boolean esEmailValido(String correo) {
+    private static boolean esEmailValido(String correo) {
         return correo.matches("[a-z0-9][a-z0-9.]*[a-z0-9]@[a-z0-9.]+[a-z0-9]\\.[a-z]{2,}");
     }
 
