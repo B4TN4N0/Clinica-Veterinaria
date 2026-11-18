@@ -19,7 +19,7 @@ public class Persona {
         } else {
             if (!esDniValido(dni)) {
                 System.out.println(
-                        "CUIDADO: El DNI aportado no es válido. Se ha establecido el valor aportado, pero puede que algunas cosas fallen");
+                        "CUIDADO: El DNI aportado no es válido. Se ha establecido el valor aportado, pero puede que algunas funciones del programa fallen.");
             }
             if (nombre == null || nombre.isEmpty()) {
                 System.out
