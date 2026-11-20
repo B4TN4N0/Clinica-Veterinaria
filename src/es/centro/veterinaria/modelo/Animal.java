@@ -1,6 +1,9 @@
 package es.centro.veterinaria.modelo;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import es.centro.veterinaria.modelo.Fechas;
 
 public class Animal {
     private static int contador = 0;
@@ -9,7 +12,7 @@ public class Animal {
     private String microchip;
     private Especie especie;
     private String raza;
-    private String fechaNac;
+    private LocalDate fechaNac;
     private Persona acompanhante;
 
     public Animal(String nombre, String microchip, Especie especie, String raza, String fechaNac,
@@ -20,7 +23,7 @@ public class Animal {
         this.microchip = microchip;
         this.especie = especie;
         this.raza = raza;
-        this.fechaNac = fechaNac;
+        this.fechaNac = LocalDate.parse(fechaNac, Fechas.FORMATO_FECHA);
         this.acompanhante = acompanhante;
     }
 
@@ -29,7 +32,8 @@ public class Animal {
         return "{" + nombre +
                 ", " + microchip +
                 ", " + raza + ", " + especie +
-                ", " + fechaNac +
+                ", " + fechaNac.format(Fechas.FECHA) +
                 ", " + acompanhante.getDni() + "}";
     }
+
 }
