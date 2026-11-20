@@ -17,6 +17,8 @@ public class Animal {
     private Persona acompanhante;
     private double pesoActual;
     private double[] historialPeso = new double[6];
+    private String[] vacunas = new String[20];
+    private LocalDate[] fechasVacunas = new LocalDate[20];
 
     public Animal(String nombre, String microchip, Especie especie, String raza, String fechaNac,
             Persona acompanhante) {
@@ -75,7 +77,6 @@ public class Animal {
             }
             return;
         }
-
         for (int i = 0; i < historialPeso.length - 1; i++) {
             historialPeso[i] = historialPeso[i + 1];
         }
@@ -83,8 +84,51 @@ public class Animal {
     }
 
     public String variacionPeso() {
-        double variacionPeso = (historialPeso[5] - historialPeso[0]) / (historialPeso[0]) * 100;
-        return variacionPeso + "%";
+        if (historialPeso == null || historialPeso.length == 0 || historialPeso[0] == 0.0) {
+            return "0.0%";
+        }
+        double ultimoPeso = historialPeso[0];
+        for (int i = 0; i < historialPeso.length; i++) {
+            if (historialPeso[i] == 0.0) {
+                break;
+            }
+            ultimoPeso = historialPeso[i];
+        }
+        double variacion = ((ultimoPeso - historialPeso[0]) / historialPeso[0]) * 100.0;
+        return variacion + "%";
+    }
+
+    public void anhadirVacuna(String vacuna, LocalDate fecha) {
+        boolean anhadida = false;
+        for (int i = 0; i < vacunas.length; i++) {
+            if (vacunas[i] == null) {
+                vacunas[i] = vacuna;
+                fechasVacunas[i] = fecha;
+                anhadida = true;
+                break;
+            }
+        }
+        if (!anhadida) {
+            System.out.println("CUIDADO: El historial de vacunas esta lleno. No se ha registrado la vacuna.");
+        }
+    }
+
+    public void anhadirVacuna(String vacuna) {
+        this.anhadirVacuna(vacuna, LocalDate.now());
+    }
+
+    // Necesidad de añadir funcionalidad para que las vacunas repetidas se use
+    // unicamente la más reciente
+    public String[] getVacunasCaducadas(LocalDate hoy) {
+        String[] vacunasCaducadas = new String[20];
+        int contador = 0;
+        for (int i = 0; i < vacunas.length - 1; i++) {
+            if ((this.fechasVacunas[i].getYear() - hoy.getYear()) >= 1) {
+                vacunasCaducadas[contador] = vacunas[i];
+                contador++;
+            }
+        }
+        return vacunasCaducadas;
     }
 
     @Override
