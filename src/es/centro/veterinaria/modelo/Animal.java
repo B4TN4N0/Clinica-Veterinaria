@@ -133,12 +133,13 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "{" + nombre +
-                ", " + pesoActual +
-                ", " + microchip +
-                ", " + raza + ", " + especie +
-                ", " + fechaNac.format(Fechas.FECHA) +
-                ", " + acompanhante.getDni() + "}";
+        return "{" + this.id +
+                ", " + this.nombre +
+                ", " + this.pesoActual +
+                ", " + this.microchip +
+                ", " + this.raza + ", " + this.especie +
+                ", " + this.fechaNac.format(Fechas.FECHA) +
+                ", " + this.acompanhante.getDni() + "}";
     }
 
 }
